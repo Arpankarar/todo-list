@@ -1,0 +1,40 @@
+{% extends 'base.html' %}    <!--to write the content of base.html in index.html-->
+
+{% block head %}
+<title>Task Master</title>    <!--to add the title of the webpage-->
+{% endblock %}                  <!--end of the header-->
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Task Master</h1>  <!--heading of the webpage-->
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">There are no tasks. Create one below!</h4>   <!--if now task is added , it is default!-->
+    {% else %}
+    <table>
+        <tr>
+            <th>Task</th>   <!--different header of the table-->
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}     <!--for each and every task added do the following-->
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>  <!--grab the content of task where the delete button is clicked-->
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>   <!--grab the content of task where the update button is clicked-->
+                </td>
+            </tr>
+        {% endfor %}          <!--end of the for loop-->
+    </table>
+    {% endif %}                 <!--end of the if/else statement-->
+
+    <div class="form">
+        <form action="/" method="POST">          <!--to post the content of the form when add task button is clicked-->
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+</div>
+{% endblock %}  <!--end of the body -->

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">  <!--to add the required css file with the html web page-->
+    {% block head %}{% endblock %} <!--using the ginger tag we can write the content in elsewhere and later it will extract the content from there.-->
+</head>
+<body>
+    {% block body %}{% endblock %} <!--same tag used for body similar to head-->
+</body>
+</html>
